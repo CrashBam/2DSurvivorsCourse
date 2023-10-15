@@ -10,6 +10,7 @@ var current_upgrades = {}
 func _ready():
 	experience_manager.level_up.connect(on_level_up)
 	
+	
 func on_level_up(current_level: int):
 	var chosen_upgrade = upgrade_pool.pick_random() as AbilityUpgrade
 	if chosen_upgrade == null :
@@ -23,5 +24,5 @@ func on_level_up(current_level: int):
 		}
 	else:
 		current_upgrades[chosen_upgrade.id]["quantity"] += 1
-		
+	
 
