@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bfutp77ltlara"]
+[gd_scene load_steps=2 format=3 uid="uid://bfutp77ltlara"]
 
 [ext_resource type="Script" path="res://scenes/ui/upgrade_screen.gd" id="1_df6my"]
-[ext_resource type="PackedScene" uid="uid://c7ei1w2y3138p" path="res://scenes/ui/ability_upgrade_card.tscn" id="1_epwym"]
 
 [node name="UpgradeScreen" type="CanvasLayer"]
 script = ExtResource("1_df6my")
@@ -13,10 +12,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="CardContainer" type="HBoxContainer" parent="MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-
-[node name="AbilityUpgradeCard" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_epwym")]
-layout_mode = 2
