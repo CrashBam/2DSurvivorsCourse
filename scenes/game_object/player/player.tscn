@@ -30,6 +30,17 @@ metadata/_edit_vertical_guides_ = []
 wait_time = 0.5
 one_shot = true
 
+[node name="HealthBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(32, 6)
+offset_left = -16.0
+offset_top = -24.0
+offset_right = 16.0
+offset_bottom = -18.0
+pivot_offset = Vector2(16, 3)
+max_value = 1.0
+value = 0.5
+show_percentage = false
+
 [node name="PickupArea2D" type="Area2D" parent="."]
 position = Vector2(0, -6)
 collision_layer = 16
