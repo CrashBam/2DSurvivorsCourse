@@ -4,6 +4,10 @@ extends CanvasLayer
 
 @onready var card_container: HBoxContainer = %CardContainer
 
+func _ready():
+	get_tree().paused = true # pause game
+	
+
 # pass in an array of ability upgrades to display on the update screen
 func set_ability_upgrades(upgrades: Array[AbilityUpgrade]):
 	
