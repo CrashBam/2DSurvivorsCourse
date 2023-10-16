@@ -13,14 +13,18 @@ func _ready():
 	
 	
 func on_level_up(current_level: int):
+	# We choose which upgrades we want to show
 	var chosen_upgrade = upgrade_pool.pick_random() as AbilityUpgrade
 	if chosen_upgrade == null :
 		return
 		
+	# we instantiate and add it as a child 
 	var upgrade_screen_instance = upgrade_screen_scene.instantiate()
 	add_child(upgrade_screen_instance)
-	# TODO i think this is the error
+	# we tell it, these are the upgrades to show
 	upgrade_screen_instance.set_ability_upgrades([chosen_upgrade] as Array[AbilityUpgrade])
+	# listening for a click, if so call (on_upgrade_selected)
+	upgrade_screen_instance.upgrade_selected.connect(on_upgrade_selected)
 	
 	
 func apply_upgrade(upgrade: AbilityUpgrade):
@@ -32,3 +36,7 @@ func apply_upgrade(upgrade: AbilityUpgrade):
 		}
 	else:
 		current_upgrades[upgrade.id]["quantity"] += 1
+		print(current_upgrades)
+		
+func on_upgrade_selected(upgrade: AbilityUpgrade):
+	apply_upgrade(upgrade)
