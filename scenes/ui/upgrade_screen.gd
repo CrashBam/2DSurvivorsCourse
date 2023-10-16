@@ -12,7 +12,6 @@ func _ready():
 
 # pass in an array of ability upgrades to display on the update screen
 func set_ability_upgrades(upgrades: Array[AbilityUpgrade]):
-	
 	# create a card for each upgrade
 	for upgrade in upgrades:
 		var card_instance = upgrade_card_scene.instantiate()
