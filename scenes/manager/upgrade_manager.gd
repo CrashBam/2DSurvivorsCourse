@@ -12,6 +12,7 @@ func _ready():
 	experience_manager.level_up.connect(on_level_up)
 	
 
+# pool filitering
 func apply_upgrade(upgrade: AbilityUpgrade):
 	var has_upgrade = current_upgrades.has(upgrade.id)
 	if !has_upgrade:
@@ -22,15 +23,25 @@ func apply_upgrade(upgrade: AbilityUpgrade):
 	else:
 		current_upgrades[upgrade.id]["quantity"] += 1
 	
+	# give us the current quantity after we apply the upgrade
+	if upgrade.max_quantity > 0:
+		# give us the current quantity after we apply the upgrade
+		var current_quantity = current_upgrades[upgrade.id]["quantity"]
+		# then filter and return 
+		if current_quantity == upgrade.max_quantity:
+			upgrade_pool = upgrade_pool.filter(func (pool_upgrade): return pool_upgrade.id != upgrade.id)
+			
+	
 	GameEvents.emit_ability_upgrade_added(upgrade, current_upgrades) 
 
 func pick_upgrades():
 	var chosen_upgrades: Array[AbilityUpgrade] = []
 	var filtered_upgrades = upgrade_pool.duplicate() # duplicate the array
 	for i in 2:
+		if filtered_upgrades.size() == 0:
+			break
 		# chosen_upgrade will return every upgrade in the list does not share id of the chosen upgrade
 		var chosen_upgrade = filtered_upgrades.pick_random() as AbilityUpgrade
-		# add it
 		chosen_upgrades.append(chosen_upgrade)
 		filtered_upgrades = filtered_upgrades.filter(func (upgrade): return upgrade.id != chosen_upgrade.id)
 	
