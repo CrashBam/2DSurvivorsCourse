@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="AbilityUpgrade" load_steps=2 format=3 uid="uid://d0x84ic2o7l7w"]
+
+[ext_resource type="Script" path="res://resources/upgrades/ability_upgrade.gd" id="1_gqydh"]
+
+[resource]
+script = ExtResource("1_gqydh")
+id = "axe"
+name = "Axe"
+description = "Periodically sends out a spinning axe."
