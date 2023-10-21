@@ -4,8 +4,11 @@ const MAX_RADIUS = 100 # As far as can be away from the player
 
 @onready var hitbox_component = $HitBoxComponent
 
+var base_rotation = Vector2.ZERO
 
 func _ready():
+	# Create a random spawning pos
+	base_rotation =  Vector2.RIGHT.rotated(randf_range(0, TAU))
 	# tweening the axe over time
 	var tween = create_tween()
 	# We are setting the tween, we are telling the tween
@@ -22,7 +25,7 @@ func tween_method(rotations: float):
 	var current_radius = percent * MAX_RADIUS
 	# take the number of rotations that we are multiply by TAU use that as a rotation
 	# apply to the RIGHT vector, RIGHT vec is at 0 degrees
-	var current_direction = Vector2.RIGHT.rotated(rotations * TAU)
+	var current_direction = base_rotation.rotated(rotations * TAU)
 	
 	
 	# How to position the axe?
