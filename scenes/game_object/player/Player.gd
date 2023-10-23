@@ -81,5 +81,6 @@ func on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, current_upgrades:
 	if not ability_upgrade is Ability:
 		return
 		
+	@warning_ignore("unused_variable")
 	var ability = ability_upgrade as Ability
 	abilities.add_child(ability_upgrade.ability_controller_scene.instantiate())
