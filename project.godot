@@ -40,6 +40,10 @@ project/assembly_name="2DSurvivorsCourse"
 movie_writer/movie_file="/Users/David/Documents/repos/Godot Projects/2DSurvivorsCourse/movies/movie_.avi"
 movie_writer/fps=30
 
+[gui]
+
+theme/custom="res://resources/theme/theme.tres"
+
 [input]
 
 move_left={
