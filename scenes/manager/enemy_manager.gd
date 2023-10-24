@@ -2,14 +2,18 @@ extends Node
 
 const SPAWN_RADIUS = 375
 
-@export var basic_enemy_scene: PackedScene # after : it's type of PackedScene
+@export var basic_enemy_scene: PackedScene
+@export var wizard_enemy_scene: PackedScene
 @export var arena_time_manager: Node
 
 @onready var timer = $Timer
 
 var base_spawn_time = 0
+var enemy_table = WeightedTable.new()
+
 
 func _ready():
+	enemy_table.add_item(basic_enemy_scene, 10)
 	base_spawn_time = timer.wait_time
 	# to get the timer you use $Timer. (then the call you want)
 	timer.timeout.connect(on_timer_timeout)
@@ -45,8 +49,11 @@ func on_timer_timeout():
 	var player = get_tree().get_first_node_in_group("player") as Node2D
 	if player == null: 
 		return
+	
+	# pick from weight table
+	var enemy_scene = enemy_table.pick_item()
 	# spawn enemy and add it to the parent of the enemy manager in main
-	var enemy = basic_enemy_scene.instantiate() as Node2D
+	var enemy = enemy_scene.instantiate() as Node2D
 	# tell it what parent you want to add it too
 	var entities_layer = get_tree().get_first_node_in_group("entities_layer")
 	entities_layer.add_child(enemy)
@@ -60,5 +67,7 @@ func on_arena_difficulty_increased(arena_difficlty: int):
 	print(time_off)
 	timer.wait_time = base_spawn_time - time_off
 	
+	if arena_difficlty == 6:
+		enemy_table.add_item(wizard_enemy_scene, 20)
 
 
