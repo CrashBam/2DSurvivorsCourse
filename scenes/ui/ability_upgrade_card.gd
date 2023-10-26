@@ -8,7 +8,13 @@ signal selected
 
 func _ready():
 	gui_input.connect(on_gui_input)
+
+
+func play_in(delay: float = 0):
+	modulate = Color.TRANSPARENT
+	await  get_tree().create_timer(delay).timeout # wait
 	
+	$AnimationPlayer.play("in")
 	
 func set_ability_upgrade(upgrade: AbilityUpgrade):
 	name_label.text = upgrade.name
