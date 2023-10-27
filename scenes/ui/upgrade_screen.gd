@@ -27,6 +27,11 @@ func set_ability_upgrades(upgrades: Array[AbilityUpgrade]):
 # when the signal is emited then we send the upgrade_selected(upgrade: AbilityUpgrade)
 func on_upgrade_selected(upgrade: AbilityUpgrade):
 	upgrade_selected.emit(upgrade)
+	
+	# effects
+	$AnimationPlayer.play("out")
+	await $AnimationPlayer.animation_finished
+	
 	get_tree().paused = false # un-pause game
 	queue_free()
 	# why are we doing a nested select
