@@ -30,3 +30,5 @@ func get_time_elapsed():
 func on_timer_timeout():
 	var end_screen_instance = end_screen_scene.instantiate()
 	add_child(end_screen_instance)
+	# call the sfx, no need to send false as it's set by default
+	end_screen_instance.play_jingle()

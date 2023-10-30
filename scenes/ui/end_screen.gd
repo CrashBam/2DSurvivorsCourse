@@ -1,6 +1,8 @@
 extends CanvasLayer
 
 @onready var panel_container = %PanelContainer
+@onready var victory_stream_player = $VictoryStreamPlayer
+@onready var defeat_stream_player = $DefeatStreamPlayer
 
 
 func _ready():
@@ -21,7 +23,14 @@ func _ready():
 func set_defeat():
 	%TitleLabel.text = "Defeat"
 	%DescriptionLabel.text = "You lost!"
+	play_jingle(true)
 
+
+func play_jingle(defeat: bool = false):
+	if defeat:
+		defeat_stream_player.play()
+	else:
+		victory_stream_player.play()
 
 func on_restart_pressed():
 	get_tree().paused = false

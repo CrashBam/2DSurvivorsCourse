@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var collision_shape_2d = $Area2D/CollisionShape2D
 @onready var sprite = $Sprite2D
+@onready var random_audio_stream_player_2d_component = $RandomAudioStreamPlayer2DComponent
 
 
 func _ready():
@@ -48,7 +49,7 @@ func on_area_entered(other_area: Area2D):
 	tween.chain()
 	tween.tween_callback(collect)
 	
-	$RandomAudioStreamPlayer2DComponent.play_random()
+	random_audio_stream_player_2d_component.play_random()
 	
 	
 
