@@ -72,6 +72,7 @@ func on_damage_interval_timer_timeout():
 	check_deal_damage()
 	
 func on_health_change():
+	GameEvents.emit_player_damage()
 	update_health_display()
 	
 func on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, current_upgrades: Dictionary):
@@ -84,9 +85,4 @@ func on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, current_upgrades:
 		#  (increase by 10%) or how much quantity is?
 		velocity_component.max_speed = base_speed + (base_speed * current_upgrades["player_speed"]["quantity"] * .1)
 		
-		
-		
-		
-		
-		
-		
+
