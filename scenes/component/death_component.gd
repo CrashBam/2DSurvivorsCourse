@@ -26,4 +26,5 @@ func on_died():
 	
 	# play animation die
 	$AnimationPlayer.play("default")
+	$HitRandomAudioStreamPlayerComponent.play_random()
 	

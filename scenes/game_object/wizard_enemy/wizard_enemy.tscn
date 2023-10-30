@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bghpv7l3io63e"]
+[gd_scene load_steps=17 format=3 uid="uid://bghpv7l3io63e"]
 
 [ext_resource type="Texture2D" uid="uid://cr6pccmji7wr5" path="res://scenes/game_object/wizard_enemy/wizard_enemy.png" id="1_0kelc"]
 [ext_resource type="Script" path="res://scenes/game_object/wizard_enemy/wizard_enemy.gd" id="1_vs0bf"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bvpf2h42e8g7m" path="res://scenes/component/hurt_box_component.tscn" id="4_rrf7f"]
 [ext_resource type="PackedScene" uid="uid://bdnpgwxdxbrbo" path="res://scenes/component/hit_flash_component.tscn" id="5_fxfu7"]
 [ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="6_6a87e"]
+[ext_resource type="PackedScene" uid="uid://cghtd6dqmthd5" path="res://scenes/component/random_audio_stream_player_2d_component.tscn" id="8_jvuoq"]
 
 [sub_resource type="Animation" id="Animation_76r4h"]
 length = 0.001
@@ -114,7 +115,7 @@ _data = {
 "walk": SubResource("Animation_bpwqa")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_a6b2n"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xivs7"]
 resource_local_to_scene = true
 shader = ExtResource("6_6a87e")
 shader_parameter/lerp_percent = 0.0
@@ -149,11 +150,15 @@ health_component = NodePath("../HealthComponent")
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_fxfu7")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
-hit_flash_material = SubResource("ShaderMaterial_a6b2n")
+hit_flash_material = SubResource("ShaderMaterial_xivs7")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("2_0tu0q")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
+
+[node name="HitRandomAudioStreamPlayerComponent" parent="." instance=ExtResource("8_jvuoq")]
+pitch_scale = 1.5
+max_distance = 300.0
 
 [node name="Visuals" type="Node2D" parent="."]
 

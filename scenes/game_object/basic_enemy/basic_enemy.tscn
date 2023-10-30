@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dnbt3ghl0rc3a"]
+[gd_scene load_steps=17 format=3 uid="uid://dnbt3ghl0rc3a"]
 
 [ext_resource type="Texture2D" uid="uid://cckfyx63x0b64" path="res://scenes/game_object/basic_enemy/basic_enemy.png" id="1_e1s3k"]
 [ext_resource type="Script" path="res://scenes/game_object/basic_enemy/basic_enemy.gd" id="1_e7hsr"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://drtda6xctenh3" path="res://scenes/component/death_component.tscn" id="4_vlqsw"]
 [ext_resource type="PackedScene" uid="uid://bdnpgwxdxbrbo" path="res://scenes/component/hit_flash_component.tscn" id="5_ki05i"]
 [ext_resource type="Shader" path="res://scenes/component/hit_flash_component.gdshader" id="6_y6t78"]
+[ext_resource type="PackedScene" uid="uid://cghtd6dqmthd5" path="res://scenes/component/random_audio_stream_player_2d_component.tscn" id="11_6evoj"]
 
 [sub_resource type="Animation" id="Animation_5lr51"]
 length = 0.001
@@ -72,7 +73,7 @@ _data = {
 "walk": SubResource("Animation_pq743")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_s4a7j"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_oxne2"]
 resource_local_to_scene = true
 shader = ExtResource("6_y6t78")
 shader_parameter/lerp_percent = 0.0
@@ -106,11 +107,14 @@ health_component = NodePath("../HealthComponent")
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_ki05i")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
-hit_flash_material = SubResource("ShaderMaterial_s4a7j")
+hit_flash_material = SubResource("ShaderMaterial_oxne2")
 
 [node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("4_vlqsw")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
+
+[node name="HitRandomAudioStreamPlayerComponent" parent="." instance=ExtResource("11_6evoj")]
+max_distance = 300.0
 
 [node name="HurtBoxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_of5ab")]
 health_component = NodePath("../HealthComponent")
