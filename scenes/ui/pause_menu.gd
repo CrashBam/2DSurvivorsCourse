@@ -15,7 +15,7 @@ func _ready():
 	panel_container.pivot_offset = panel_container.size / 2 #set panel pivot center
 	
 	resume_button.pressed.connect(on_resume_pressed)
-	options_button.pressed.connect(on_option_pressed)
+	options_button.pressed.connect(on_options_pressed)
 	quit_button.pressed.connect(on_quit_pressed)
 	
 	animation_player.play("default")
@@ -55,7 +55,9 @@ func on_resume_pressed():
 
 
 
-func on_option_pressed():
+func on_options_pressed():
+	ScreenTransition.transition()
+	await ScreenTransition.transitioned_halfway
 	var options_menu_instance = options_menu_scene.instantiate()
 	add_child(options_menu_instance)
 	options_menu_instance.back_pressed.connect(on_options_back_pressed.bind(options_menu_instance))
