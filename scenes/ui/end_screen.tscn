@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dxw5x4oj5wl61"]
+[gd_scene load_steps=10 format=3 uid="uid://dxw5x4oj5wl61"]
 
 [ext_resource type="Script" path="res://scenes/ui/end_screen.gd" id="1_fqbho"]
+[ext_resource type="PackedScene" uid="uid://djeoet88gxvq3" path="res://scenes/ui/vignette.tscn" id="2_01h05"]
 [ext_resource type="AudioStream" uid="uid://bpeidunyn5nn3" path="res://assets/audio/Win_Loose_SFX/jingles_victory.ogg" id="2_07kgk"]
 [ext_resource type="PackedScene" uid="uid://bfdmbhmtrwjtn" path="res://scenes/ui/sound_button.tscn" id="2_cryvu"]
 [ext_resource type="AudioStream" uid="uid://chrh5gd14sgng" path="res://assets/audio/Win_Loose_SFX/jingles_defeat.ogg" id="3_o6twt"]
@@ -92,10 +93,6 @@ color = Color(0.607843, 0.298039, 0.639216, 0.352941)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -27.0
-offset_top = 10.0
-offset_right = -27.0
-offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -120,11 +117,9 @@ theme_override_constants/separation = 16
 [node name="TitleLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_shadow_color = Color(0.14902, 0.168627, 0.266667, 1)
-theme_override_colors/font_outline_color = Color(0.14902, 0.168627, 0.266667, 1)
+theme_type_variation = &"BlueOutlineLabel"
 theme_override_constants/shadow_offset_x = 0
 theme_override_constants/shadow_offset_y = 0
-theme_override_constants/outline_size = 8
 theme_override_font_sizes/font_size = 32
 text = "Victory"
 horizontal_alignment = 1
@@ -133,9 +128,7 @@ vertical_alignment = 1
 [node name="DescriptionLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_colors/font_shadow_color = Color(0.14902, 0.168627, 0.266667, 1)
-theme_override_colors/font_outline_color = Color(0.14902, 0.168627, 0.266667, 1)
-theme_override_constants/outline_size = 8
+theme_type_variation = &"BlueOutlineLabel"
 text = "You won!"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
@@ -150,3 +143,5 @@ text = "Restart"
 unique_name_in_owner = true
 layout_mode = 2
 text = "Quit"
+
+[node name="Vignette" parent="." instance=ExtResource("2_01h05")]
