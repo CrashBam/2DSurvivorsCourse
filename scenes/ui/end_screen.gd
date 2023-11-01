@@ -24,6 +24,7 @@ func set_defeat():
 	%TitleLabel.text = "Defeat"
 	%DescriptionLabel.text = "You lost!"
 	play_jingle(true)
+	
 
 
 func play_jingle(defeat: bool = false):
@@ -31,6 +32,7 @@ func play_jingle(defeat: bool = false):
 		defeat_stream_player.play()
 	else:
 		victory_stream_player.play()
+
 
 func on_restart_pressed():
 	ScreenTransition.transition()

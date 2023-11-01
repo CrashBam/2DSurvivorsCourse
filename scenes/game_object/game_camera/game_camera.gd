@@ -1,6 +1,6 @@
 extends Camera2D
 
-@onready var player_nodes = get_tree().get_nodes_in_group("player")
+#@onready var player_nodes = get_tree().get_nodes_in_group("player")
 
 var target_position = Vector2.ZERO
 
@@ -15,7 +15,7 @@ func _process(delta):
 
 
 func acquire_target():
-	#var player_nodes = get_tree().get_nodes_in_group("player")
+	var player_nodes = get_tree().get_nodes_in_group("player")
 	if player_nodes.size() > 0:
 		var player = player_nodes[0] as Node2D
 		

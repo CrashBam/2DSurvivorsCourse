@@ -32,3 +32,4 @@ func on_timer_timeout():
 	add_child(end_screen_instance)
 	# call the sfx, no need to send false as it's set by default
 	end_screen_instance.play_jingle()
+	MetaProgression.save() # save data
