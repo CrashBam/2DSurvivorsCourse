@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://ch5cljfb6g2h0"]
+[gd_scene load_steps=8 format=3 uid="uid://ch5cljfb6g2h0"]
 
 [ext_resource type="Texture2D" uid="uid://2djvqf4q2flj" path="res://art/UI/logo_Talk_blinking.png" id="1_8vu8u"]
 [ext_resource type="Script" path="res://scenes/splash_screen/splash_screen.gd" id="1_eo4qq"]
@@ -155,24 +155,15 @@ tracks/5/keys = {
 "update": 0,
 "values": [Vector2(-1, -47), Vector2(-1, -55), Vector2(-1, -47)]
 }
-tracks/6/type = "method"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath(".")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(1.965),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"load_main_menu"
-}]
-}
+
+[sub_resource type="Animation" id="Animation_3tepn"]
+resource_name = "blink_logo"
+step = 0.05
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dclte"]
 _data = {
 "RESET": SubResource("Animation_jj3gk"),
+"blink_logo": SubResource("Animation_3tepn"),
 "start_logo": SubResource("Animation_fyccp")
 }
 
@@ -180,6 +171,7 @@ _data = {
 script = ExtResource("1_eo4qq")
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -217,3 +209,6 @@ hframes = 4
 position = Vector2(-6, 123)
 scale = Vector2(4, 4)
 texture = ExtResource("2_84nkt")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
