@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://ch5cljfb6g2h0"]
+[gd_scene load_steps=10 format=3 uid="uid://ch5cljfb6g2h0"]
 
 [ext_resource type="Texture2D" uid="uid://2djvqf4q2flj" path="res://art/UI/logo_Talk_blinking.png" id="1_8vu8u"]
 [ext_resource type="Script" path="res://scenes/splash_screen/splash_screen.gd" id="1_eo4qq"]
 [ext_resource type="Texture2D" uid="uid://dktp1k8m5kg4r" path="res://art/UI/godotLogoText_justText.png" id="2_84nkt"]
+[ext_resource type="AudioStream" uid="uid://dx2mqgwgnqd32" path="res://assets/audio/Bfxr_mysounds/Powerup4.wav" id="2_mtip1"]
+[ext_resource type="AudioStream" uid="uid://dm70p8keviuru" path="res://assets/audio/Bfxr_mysounds/Swoosh01.wav" id="3_d8gi5"]
 
 [sub_resource type="Animation" id="Animation_jj3gk"]
 length = 0.001
@@ -159,6 +161,23 @@ tracks/5/keys = {
 "update": 0,
 "values": [Vector2(-1, -47), Vector2(-1, -55), Vector2(-1, -47)]
 }
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.155, 1.1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"play_swoosh_sfx"
+}, {
+"args": [],
+"method": &"play_sound_sfx"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dclte"]
 _data = {
@@ -177,6 +196,16 @@ wait_time = 3.0
 libraries = {
 "": SubResource("AnimationLibrary_dclte")
 }
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_mtip1")
+volume_db = -2.0
+bus = &"sfx"
+
+[node name="AudioStreamPlayer2DSwoosh" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_d8gi5")
+volume_db = -2.0
+bus = &"sfx"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -203,6 +232,14 @@ layout_mode = 2
 position = Vector2(-1, -47)
 scale = Vector2(4, 4)
 texture = ExtResource("1_8vu8u")
+hframes = 4
+
+[node name="LogoBlinking" type="Sprite2D" parent="CenterContainer/VBoxContainer"]
+visible = false
+position = Vector2(-103, -143)
+scale = Vector2(4, 4)
+texture = ExtResource("1_8vu8u")
+centered = false
 hframes = 4
 
 [node name="LogoText" type="Sprite2D" parent="CenterContainer/VBoxContainer"]

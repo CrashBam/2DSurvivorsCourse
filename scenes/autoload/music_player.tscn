@@ -7,10 +7,11 @@
 process_mode = 3
 stream = ExtResource("1_y4ibu")
 volume_db = -20.0
-autoplay = true
 bus = &"music"
 script = ExtResource("2_v82bh")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 15.0
-one_shot = true
+
+[node name="StartTimeWait" type="Timer" parent="."]
+wait_time = 4.25
