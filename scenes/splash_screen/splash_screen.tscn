@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://ch5cljfb6g2h0"]
+[gd_scene load_steps=18 format=3 uid="uid://ch5cljfb6g2h0"]
 
 [ext_resource type="Texture2D" uid="uid://2djvqf4q2flj" path="res://art/UI/logo_Talk_blinking.png" id="1_8vu8u"]
 [ext_resource type="Script" path="res://scenes/splash_screen/splash_screen.gd" id="1_eo4qq"]
 [ext_resource type="Texture2D" uid="uid://dktp1k8m5kg4r" path="res://art/UI/godotLogoText_justText.png" id="2_84nkt"]
 [ext_resource type="AudioStream" uid="uid://dx2mqgwgnqd32" path="res://assets/audio/Bfxr_mysounds/Powerup4.wav" id="2_mtip1"]
 [ext_resource type="AudioStream" uid="uid://dm70p8keviuru" path="res://assets/audio/Bfxr_mysounds/Swoosh01.wav" id="3_d8gi5"]
+[ext_resource type="AudioStream" uid="uid://dm7rn15sf17sm" path="res://assets/audio/Music/OpeningBlurb03.ogg" id="4_weox1"]
 [ext_resource type="Texture2D" uid="uid://8sdgbdknot2a" path="res://art/UI/logo_Talk_new.png" id="6_2bwjl"]
 
 [sub_resource type="Animation" id="Animation_jj3gk"]
@@ -285,6 +286,11 @@ bus = &"sfx"
 stream = ExtResource("3_d8gi5")
 volume_db = -2.0
 bus = &"sfx"
+
+[node name="AudioStreamPlayer2DBackground" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_weox1")
+volume_db = -4.0
+bus = &"music"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15

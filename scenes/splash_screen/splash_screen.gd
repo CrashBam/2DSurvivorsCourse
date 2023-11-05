@@ -5,7 +5,8 @@ class_name SplashScreen
 @onready var animation_player = $AnimationPlayer
 @onready var timer = $Timer
 @onready var audio_player = $AudioStreamPlayer2D
-@onready var audio_stream_player_2d_swoosh = $AudioStreamPlayer2DSwoosh
+@onready var audio_stream_swooshFX = $AudioStreamPlayer2DSwoosh
+@onready var audio_streambackground_music = $AudioStreamPlayer2DBackground
 @onready var logo_blinking_anim = $CenterContainer/VBoxContainer/LogoBlinkingAnim
 @onready var logo_blink_sprite = $CenterContainer/VBoxContainer/LogoBlinkSprite
 
@@ -14,6 +15,7 @@ func _ready():
 	animation_player.play("start_logo")
 	logo_blinking_anim.hide()
 	logo_blink_sprite.show()
+	audio_streambackground_music.play()
 
 func _input(event):
 	if(event is InputEventKey):
@@ -26,7 +28,7 @@ func play_sound_sfx():
 
 
 func play_swoosh_sfx():
-	audio_stream_player_2d_swoosh.play()
+	audio_stream_swooshFX.play()
 
 
 func _on_animation_player_animation_finished(anim_name):
@@ -39,7 +41,9 @@ func _on_animation_player_animation_finished(anim_name):
 
 
 func _on_timer_timeout():
+	play_swoosh_sfx()
 	ScreenTransition.transition()
 	await ScreenTransition.transitioned_halfway
 	MySignals.SplashScreenEnded.emit()
+	audio_streambackground_music.stop()
 	get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
