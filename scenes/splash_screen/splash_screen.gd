@@ -44,6 +44,7 @@ func _on_animation_player_animation_finished(anim_name):
 
 func _on_timer_timeout():
 	play_swoosh_sfx()
+	animation_player_music.play_backwards("fade_music")
 	ScreenTransition.transition()
 	await ScreenTransition.transitioned_halfway
 	MySignals.SplashScreenEnded.emit()
