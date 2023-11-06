@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cliexajgd0kms"]
+[gd_scene load_steps=18 format=3 uid="uid://cliexajgd0kms"]
 
 [ext_resource type="Script" path="res://scenes/ui/meta_upgrade_card.gd" id="1_4idrd"]
 [ext_resource type="PackedScene" uid="uid://brk0pnqvkkqk4" path="res://scenes/component/random_stream_player_component.tscn" id="2_x10gq"]
@@ -13,7 +13,6 @@
 [ext_resource type="AudioStream" uid="uid://dpickb0ccdy7k" path="res://assets/audio/UI Sound/switch9.ogg" id="11_pcpth"]
 [ext_resource type="AudioStream" uid="uid://cnfaj1sibf3dk" path="res://assets/audio/UI Sound/switch10.ogg" id="12_j40oj"]
 [ext_resource type="Texture2D" uid="uid://bi67rhevvwx7a" path="res://scenes/game_object/experience_vial/experience_vial.png" id="13_5gui5"]
-[ext_resource type="PackedScene" uid="uid://bfdmbhmtrwjtn" path="res://scenes/ui/sound_button.tscn" id="13_ircwl"]
 
 [sub_resource type="Animation" id="Animation_vbvyt"]
 length = 0.001
@@ -170,7 +169,8 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = -1
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="ProgressLabel" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
 theme_type_variation = &"BlueOutlineLabel"
@@ -182,6 +182,7 @@ layout_mode = 2
 mouse_filter = 2
 
 [node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
 theme_override_styles/fill = SubResource("StyleBoxFlat_gsixs")
@@ -206,6 +207,7 @@ size_flags_vertical = 0
 mouse_filter = 2
 texture = ExtResource("13_5gui5")
 
-[node name="PurchaseButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("13_ircwl")]
+[node name="PurchaseButton" type="Button" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Purchase"
