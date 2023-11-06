@@ -11,7 +11,6 @@ var upgrade: MetaUpgrade
 
 func _ready():
 	purchase_button.pressed.connect(on_purchase_pressed)
-	gui_input.connect(on_gui_input)
 	
 
 
@@ -35,14 +34,20 @@ func select_card():
 	$AnimationPlayer.play("selected")
 
 
-	# This func will fire if the gui detects left click on mouse
-	# and fire off the signal, things listening will run there func's
-func on_gui_input(event: InputEvent): 
-	if event.is_action_pressed("left_click"):
-		select_card()
-
 
 func on_purchase_pressed():
 	if upgrade == null:
 		return
 	MetaProgression.add_meta_upgrade(upgrade)
+	MetaProgression.save_data["meta_upgrade_currency"] -= upgrade.experience_cost
+	MetaProgression.save()
+	update_progress()
+	# We will call update_progress on all of the cards in the group name
+	get_tree().call_group("meta_upgrade_card", "update_progress")
+	$AnimationPlayer.play("selected")
+
+
+
+
+
+
