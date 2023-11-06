@@ -10,7 +10,8 @@ func _ready():
 
 
 func on_splashscreen_ended():
-	play()
+	if !is_playing():
+		play()
 
 
 func on_finished():
@@ -18,5 +19,6 @@ func on_finished():
 
 
 func on_timer_timeout():
-	play()
+	if !is_playing():
+		play()
 

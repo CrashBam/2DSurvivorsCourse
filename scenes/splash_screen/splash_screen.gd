@@ -2,8 +2,9 @@ extends Node
 class_name SplashScreen
 
 
-@onready var animation_player = $AnimationPlayer
 @onready var timer = $Timer
+@onready var animation_player = $AnimationPlayer
+@onready var animation_player_music = $AnimationPlayerMusic
 @onready var audio_player = $AudioStreamPlayer2D
 @onready var audio_stream_swooshFX = $AudioStreamPlayer2DSwoosh
 @onready var audio_streambackground_music = $AudioStreamPlayer2DBackground
@@ -15,6 +16,7 @@ func _ready():
 	animation_player.play("start_logo")
 	logo_blinking_anim.hide()
 	logo_blink_sprite.show()
+	animation_player_music.play("fade_music")
 	audio_streambackground_music.play()
 
 func _input(event):

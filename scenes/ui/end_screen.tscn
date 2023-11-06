@@ -134,15 +134,15 @@ text = "You won!"
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="RestartButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("2_cryvu")]
+[node name="ContinueButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("2_cryvu")]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Restart"
+text = "Continue"
 
 [node name="QuitButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("2_cryvu")]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Quit"
+text = "Quit to Menu"
 
 [node name="Vignette" parent="." instance=ExtResource("2_01h05")]
 layer = 2
